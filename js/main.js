@@ -1,7 +1,7 @@
 var generar = document.getElementById('ejecutar');
 var otraSol = document.getElementById("solucion");
 var tablero = document.getElementById('tablero');
-var steps = document.getElementById('stepByStep');
+var stepByStep = document.getElementById('steps');
 
 function printMatrix (M){
     console.log ("___________________");
@@ -143,16 +143,44 @@ var myhappyfunction= function(){
     }
     tablero.appendChild(tabla); 
 }
+
+var generarCeldas =function(){
+    var M = initMatrix (n);
+    tablero.innerHTML = '';
+    var n = parseInt(document.getElementById('lados').value);
+    var tabla = document.createElement('table');
+    tabla.border = "1";
+    for (var i = 0; i < n; i++) {
+        var fila = document.createElement('tr');
+        for (var j = 0; j < n; j++) {
+            var celda = document.createElement('td');
+            if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
+                celda.setAttribute('class', 'negro');
+            }
+            var p = document.createElement('p');
+            p.innerHTML = M[i][j];
+            celda.appendChild(p);
+            
+            fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);
+    }
+    tablero.appendChild(tabla); 
+}
+
+function imprimir (){
+
+}
+
 otraSol.onclick= function(){
   myhappyfunction();
 }
+
 generar.onclick = function () {
   myhappyfunction();
 }
-steps.onclick = function(){
-  var cont;
-  
+
+stepByStep.onclick = function () {
+  generarCeldas();
 }
-
-
 

@@ -1,0 +1,60 @@
+.negro{
+  background-color: black;
+  color:white;
+}
+header{
+	text-align: center;
+	padding: 0em 3em;
+    margin: 1em 25%;
+    background: #088A4B;
+    font-family: fantasy;
+    font-size: 300%;
+}
+
+body{
+	text-align: center;
+	align-items: left;
+}
+
+td{
+  width: 40px;
+  height: 40px;
+}
+button {
+  background: #088A4B;
+  background-image: -webkit-linear-gradient(top, #088A4B, #04B45F);
+  background-image: -moz-linear-gradient(top, #088A4B, #04B45F);
+  background-image: -ms-linear-gradient(top, #088A4B, #04B45F);
+  background-image: -o-linear-gradient(top, #088A4B, #04B45F);
+  background-image: linear-gradient(to bottom, #088A4B, #04B45F);
+  -webkit-border-radius: 18;
+  -moz-border-radius: 18;
+  border-radius: 18px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+button:hover {
+  background: #38610B;
+  background-image: -webkit-linear-gradient(top, #38610B, #86B404);
+  background-image: -moz-linear-gradient(top, #38610B, #86B404);
+  background-image: -ms-linear-gradient(top, #38610B, #86B404);
+  background-image: -o-linear-gradient(top, #38610B, #86B404);
+  background-image: linear-gradient(to bottom, #38610B, #86B404);
+  text-decoration: none;
+}
+
+p{
+	font-family: fantasy;
+}
+
+.tablero{
+	align-items: center;
+}

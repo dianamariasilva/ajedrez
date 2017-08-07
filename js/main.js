@@ -3,6 +3,11 @@ var otraSol = document.getElementById("solucion");
 var tablero = document.getElementById('tablero');
 var stepByStep = document.getElementById('steps');
 
+var n = parseInt(document.getElementById('lados').value);
+if(n==undefined){
+  alert("Ingrese un valor");
+}
+
 function printMatrix (M){
     console.log ("___________________");
     for (var i = 0; i < M.length; i++)
@@ -67,9 +72,8 @@ function use_helper (soluciones, helper) {
 function gen_solution (M, helper, n) {
     var mov_x = [-2, -1, +1, +2, +2, +1, -1, -2];
     var mov_y = [-1, -2, -2, -1, +1, +2, +2, +1];    
-    var step = 1;
     var x = 0; var y = 0;
-    
+    var step = 1;
     M[x][y] = step;
     while ( true ) {
         if ( step == n * n) {
@@ -99,8 +103,8 @@ function gen_solution (M, helper, n) {
     return false;
 } 
 
-
-function initMatrix (n) {
+var matrizEureka;
+var initMatrix =function (n) {
     var matrix = [];
     for (var i = 0; i < n; i++) {
         var fila = [];
@@ -125,7 +129,7 @@ var myhappyfunction= function(){
     }
     
     var tabla = document.createElement('table');
-    tabla.border = "1";
+    tabla.border = "3";
     for (var i = 0; i < n; i++) {
         var fila = document.createElement('tr');
         for (var j = 0; j < n; j++) {
@@ -134,6 +138,7 @@ var myhappyfunction= function(){
                 celda.setAttribute('class', 'negro');
             }
             var p = document.createElement('p');
+            p.setAttribute("class", "num");
             p.innerHTML = M[i][j];
             celda.appendChild(p);
             
@@ -144,32 +149,29 @@ var myhappyfunction= function(){
     tablero.appendChild(tabla); 
 }
 
-var generarCeldas =function(){
-    var M = initMatrix (n);
-    tablero.innerHTML = '';
-    var n = parseInt(document.getElementById('lados').value);
-    var tabla = document.createElement('table');
-    tabla.border = "1";
-    for (var i = 0; i < n; i++) {
-        var fila = document.createElement('tr');
-        for (var j = 0; j < n; j++) {
-            var celda = document.createElement('td');
-            if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
-                celda.setAttribute('class', 'negro');
-            }
-            var p = document.createElement('p');
-            p.innerHTML = M[i][j];
-            celda.appendChild(p);
-            
-            fila.appendChild(celda);
+var cont = 1;
+
+stepsBtn = function(){
+    var celdas = document.getElementsByTagName("td");
+    var lados = document.getElementById("lados");
+    var n = parseInt(document.getElementById('lados').textContent);
+    for (var j = 0; j < celdas.length; j++) {
+        if (celdas[j].id == cont) {
+            celdas[j].innerHTML = cont;
         }
-        tabla.appendChild(fila);
     }
-    tablero.appendChild(tabla); 
-}
+    if (cont > (n * n)) {
 
-function imprimir (){
-
+        alert("Eureka!!");
+        var num = document.getElementsByClassName("num");
+        for (var i = 0; i < num.length; i++) {
+            num[i].innerText = "";
+        }
+        cont = 0;
+        lados.innerHTML = "";
+        tablero.innerHTML = "";
+    }
+    cont++;
 }
 
 otraSol.onclick= function(){
@@ -181,6 +183,6 @@ generar.onclick = function () {
 }
 
 stepByStep.onclick = function () {
-  generarCeldas();
+  stepsBtn ();
 }
 
